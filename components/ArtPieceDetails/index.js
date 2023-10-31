@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import FavoriteButton from "../FavoriteButton";
 
 export default function ArtPieceDetails({ image, title, artist, year, genre }) {
   const router = useRouter();
@@ -7,6 +8,8 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
   return (
     <>
       <h1>{title}</h1>
+
+      <FavoriteButton />
 
       <Image src={image} alt={title} width={200} height={200} />
       <p>
