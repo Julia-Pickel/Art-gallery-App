@@ -1,9 +1,19 @@
 import useSWR from "swr";
 import GlobalStyle from "../styles";
-import { useState } from "react";
+
 import Layout from "@/components/Layout";
+import { useState } from "react";
 
 export default function App({ Component, pageProps }) {
+  const [artPiecesInfo, setArtPiecesInfo] = useState({
+    isFavorite: false,
+    slug: "",
+  });
+
+  function handleArtPieceInfo(newArtPieceInfo) {
+    setArtPiecesInfo([...artPiecesInfo, newArtPieceInfo]);
+  }
+
   const URL = "https://example-apis.vercel.app/api/art";
   const fetcher = (...args) =>
     fetch(...args).then((response) => response.json());
@@ -21,7 +31,12 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} apiData={data} />
+      <Component
+        {...pageProps}
+        apiData={data}
+        artPiecesInfo={artPiecesInfo}
+        setArtPiecesInfo={handleArtPieceInfo}
+      />
       <Layout />
     </>
   );
