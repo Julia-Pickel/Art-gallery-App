@@ -21,6 +21,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const StyledList = styled.a`
+const StyledList = styled.li`
   list-style: none;
 `;
