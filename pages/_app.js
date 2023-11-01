@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
   });
 
   function handleArtPieceInfo(newArtPieceInfo) {
-    setArtPiecesInfo([...artPiecesInfo, newArtPieceInfo]);
+    // setArtPiecesInfo([...artPiecesInfo, newArtPieceInfo]);
   }
 
   const URL = "https://example-apis.vercel.app/api/art";
