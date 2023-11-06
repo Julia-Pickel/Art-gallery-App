@@ -5,6 +5,9 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: ["example-apis.vercel.app"],
   },
   webpack(config) {
@@ -15,6 +18,14 @@ const nextConfig = {
     });
 
     return config;
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "example-apis.vercel.app",
+      },
+    ],
   },
 };
 

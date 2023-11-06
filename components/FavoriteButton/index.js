@@ -1,23 +1,23 @@
 import styled from "styled-components";
-import FavIconSvg from "./../../assets/heart.svg";
-import { useState } from "react";
+import FavIconSvg from "./heart.svg";
 
 export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
-  //const [isToggled, setToggle] = useState(false);
-  function handleButton() {
-    //onToggleFavorite
-    onToggleFavorite(!isFavorite);
-  }
-
   return (
-    <button type="button" onClick={() => handleButton()}>
-      {isFavorite ? <FavIcon $isFav /> : <FavIcon />}
-    </button>
+    <>
+      <StyledButton type="button" onClick={onToggleFavorite}>
+        <FavIcon $isFavorite={isFavorite} />
+      </StyledButton>
+    </>
   );
 }
 const FavIcon = styled(FavIconSvg)`
-  height: 24px;
   width: 24px;
-  fill: ${(props) => (props.$isFav ? "red" : "white")};
+  height: 24px;
+  fill: ${(props) => (props.$isFavorite ? "red" : "grey")};
 `;
-const StyledButton = styled.button``;
+
+const StyledButton = styled.button`
+  all: unset;
+  position: absolute;
+  z-index: 1;
+`;
